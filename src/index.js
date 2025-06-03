@@ -1,9 +1,7 @@
-// Main package exports
-export { 
-    CustomFieldsAutocomplete,
-  } from './CustomFieldsAutocompleteProvider.jsx';
+// Main exports
+export { default as CustomFieldsAutocomplete } from './CustomFieldsAutocomplete';
+export { CustomFieldsProvider, useCustomFields } from './CustomFieldsProvider';
 
-  export {
-    CustomFieldsAutocompleteDemo
-} from './CustomFieldsAutocompleteDemo.jsx';
-  
+// Re-export the autocomplete components for convenience
+export { default as LabelAutocomplete } from './LabelAutocomplete';
+export { default as ValueAutocomplete } from './ValueAutocomplete';
