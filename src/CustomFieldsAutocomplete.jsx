@@ -31,7 +31,8 @@ const CustomField = ({
   };
 
   return (
-    <Grid container spacing={2} sx={{ mb: 2 }}>
+    <Grid container spacing={2} sx={{ mb: 2, display: 'flex', 
+          alignItems: 'center' }} >
       <Grid item xs={12} sm={10}>
         <Paper
           elevation={1}
@@ -62,7 +63,11 @@ const CustomField = ({
         </Paper>
       </Grid>
       {onRemove && (
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={2} sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center' 
+        }}>
           <Button
             title="Remove Custom Field"
             variant="text"
