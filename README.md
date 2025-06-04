@@ -14,7 +14,7 @@ A flexible and reusable React component for managing custom fields with autocomp
 ## Installation
 
 ```bash
-npm install @yourorg/custom-fields-autocomplete
+npm install custom-fields-autocomplete
 ```
 
 ## Peer Dependencies
@@ -32,7 +32,7 @@ import React, { useState } from 'react';
 import { 
   CustomFieldsAutocomplete, 
   CustomFieldsProvider 
-} from '@yourorg/custom-fields-autocomplete';
+} from 'custom-fields-autocomplete';
 
 const App = () => {
   const [fields, setFields] = useState([]);
@@ -141,7 +141,7 @@ Returns an object with:
 ### Custom Implementation
 
 ```javascript
-import { useCustomFields } from '@yourorg/custom-fields-autocomplete';
+import { useCustomFields } from 'custom-fields-autocomplete';
 
 const CustomComponent = () => {
   const { customFields, addCustomField, removeCustomField } = useCustomFields();
@@ -184,9 +184,9 @@ npm run lint
 
 ## License
 
-MIT © [Your Name]
+MIT © Andrei-Constantin Alexandru
 
 ## Support
 
 - 🐛 Issues: [GitHub Issues](https://github.com/programmer4web/react-custom-fields-autocomplete/issues)
-- 📖 Documentation: [GitHub Wiki](https://github.com/programmer4web/custom-fields-autocomplete/wiki)
+- 📖 Documentation: 
