@@ -1,6 +1,6 @@
 {
   "name": "react-custom-fields-autocomplete",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A reusable React component for managing custom fields with autocomplete functionality",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
