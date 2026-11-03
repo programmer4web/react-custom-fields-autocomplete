@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useRef } from 'react';
 
 // Create the context
 const CustomFieldsContext = createContext();
@@ -25,6 +25,8 @@ export const CustomFieldsProvider = ({
   buttonProps = {}
 }) => {
   const [customFields, setCustomFields] = useState(initialFields);
+  // Last id handed out, so fields added within the same millisecond stay unique
+  const lastIdRef = useRef(0);
 
   // Wrapper to notify parent when fields change
   const updateCustomFields = (newFields) => {
@@ -35,8 +37,9 @@ export const CustomFieldsProvider = ({
   };
 
   const addCustomField = () => {
+    lastIdRef.current = Math.max(Date.now(), lastIdRef.current + 1);
     const newField = {
-      id: Date.now(),
+      id: lastIdRef.current,
       label: '',
       value: '',
     };

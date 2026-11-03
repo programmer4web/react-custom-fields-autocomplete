@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Paper, Button } from '@mui/material';
+import { Box, Paper, Button } from '@mui/material';
 import { useCustomFields } from './CustomFieldsProvider';
 import LabelAutocomplete from './LabelAutocomplete';
 import ValueAutocomplete from './ValueAutocomplete';
@@ -10,7 +10,9 @@ const CustomField = ({
   onRemove,
   onFieldChange,
 }) => {
-  const { labelProps, valueProps, fieldProps, buttonProps } = useCustomFields();
+  const { labelOptions, valueOptions, labelProps, valueProps, fieldProps, buttonProps } = useCustomFields();
+  // paperSx is merged into the Paper's sx; the rest are regular Paper props
+  const { paperSx, ...paperProps } = fieldProps;
   const [label, setLabel] = useState(field.label || '');
   const [value, setValue] = useState(field.value || '');
 
@@ -30,44 +32,40 @@ const CustomField = ({
     onFieldChange({ label, value: newValue });
   };
 
+  // Layout uses Box (flex/grid) rather than MUI Grid: Grid's item/xs API was
+  // replaced in MUI v7, and Box behaves the same in MUI 5, 6 and 7
   return (
-    <Grid container spacing={2} sx={{ mb: 2, display: 'flex', 
-          alignItems: 'center' }} >
-      <Grid item xs={12} sm={10}>
-        <Paper
-          elevation={1}
-          sx={{
-            border: '1px solid gray',
-            borderRadius: 2,
-            padding: 2,
-            ...fieldProps.paperSx,
-          }}
-          {...fieldProps}
-        >
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <LabelAutocomplete 
-                label={label} 
-                setLabel={handleLabelChange}
-                {...labelProps}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <ValueAutocomplete 
-                value={value} 
-                setValue={handleValueChange}
-                {...valueProps}
-              />
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
+    <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
+      <Paper
+        elevation={1}
+        {...paperProps}
+        sx={{
+          flex: 1,
+          minWidth: 0,
+          border: '1px solid gray',
+          borderRadius: 2,
+          padding: 2,
+          ...paperSx,
+          ...paperProps.sx,
+        }}
+      >
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
+          <LabelAutocomplete
+            label={label}
+            setLabel={handleLabelChange}
+            options={labelOptions}
+            {...labelProps}
+          />
+          <ValueAutocomplete
+            value={value}
+            setValue={handleValueChange}
+            options={valueOptions}
+            {...valueProps}
+          />
+        </Box>
+      </Paper>
       {onRemove && (
-        <Grid item xs={12} sm={2} sx={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center' 
-        }}>
+        <Box sx={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Button
             title="Remove Custom Field"
             variant="text"
@@ -78,9 +76,9 @@ const CustomField = ({
           >
             {buttonProps.removeText || '-'}
           </Button>
-        </Grid>
+        </Box>
       )}
-    </Grid>
+    </Box>
   );
 };
 

@@ -10,6 +10,10 @@ export default {
       file: 'dist/index.js',
       format: 'cjs',
       exports: 'named',
+      // MUI subpath modules (e.g. @mui/material/TextField) export the component
+      // as `.default` under require(); 'auto' unwraps it, without it the CJS
+      // build rendered the module object and crashed ("Element type is invalid")
+      interop: 'auto',
       sourcemap: true,
     },
     {

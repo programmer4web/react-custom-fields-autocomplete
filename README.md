@@ -89,12 +89,14 @@ const AdvancedExample = () => {
 |------|------|---------|-------------|
 | `initialFields` | `Array` | `[]` | Initial array of custom fields |
 | `onFieldsChange` | `Function` | `undefined` | Callback when fields change |
-| `labelOptions` | `Array` | `[]` | Options for label autocomplete |
-| `valueOptions` | `Array` | `[]` | Options for value autocomplete |
-| `labelProps` | `Object` | `{}` | Props passed to label autocomplete |
-| `valueProps` | `Object` | `{}` | Props passed to value autocomplete |
-| `fieldProps` | `Object` | `{}` | Props for field container styling |
-| `buttonProps` | `Object` | `{}` | Props for button customization |
+| `labelOptions` | `Array` | `[]` | Suggestions for the label input: strings or `{ title }` objects. Users can still type new values |
+| `valueOptions` | `Array` | `[]` | Suggestions for the value input: strings or `{ title }` objects. Users can still type new values |
+| `labelProps` | `Object` | `{}` | Props for the label text field, e.g. `placeholder`, `variant`, `size`, `label`, `sx` |
+| `valueProps` | `Object` | `{}` | Props for the value text field, e.g. `placeholder`, `variant`, `size`, `label`, `sx` |
+| `fieldProps` | `Object` | `{}` | Props for the field container (MUI `Paper`); `paperSx` adds styles |
+| `buttonProps` | `Object` | `{}` | `addText`, `removeText`, `addSx`, `removeSx`, `addProps`, `removeProps` |
+
+Works with Material UI 5, 6 and 7.
 
 ### useCustomFields Hook
 
@@ -166,13 +168,12 @@ npm run build
 
 # Run in development mode
 npm run dev
-
-# Run tests
-npm test
-
-# Lint code
-npm run lint
 ```
+
+## Changelog
+
+- **1.1.0** - `labelOptions`/`valueOptions` now appear as suggestions and `labelProps`/`valueProps` are applied to the text fields, as documented (previously both were ignored). Layout works with Material UI 7 (MUI Grid's `item`/`xs` API changed in v7) and the text fields are full width instead of a fixed 300px. `fieldProps.paperSx` no longer reaches the DOM. Removed debug logging. Field ids stay unique when fields are added quickly. TypeScript declarations included (the published types file was empty). Build tooling updated.
+- **1.0.2** - Initial public release.
 
 ## Contributing
 
