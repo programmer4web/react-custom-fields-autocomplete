@@ -2,6 +2,10 @@
 
 A flexible and reusable React component for managing custom fields with autocomplete functionality, built with Material-UI.
 
+[Full Documentation](https://evaficy.com/react-custom-fields-autocomplete)
+
+> Built by **[EVAFICY](https://evaficy.com/?utm_source=oss&utm_medium=readme&utm_campaign=react-custom-fields-autocomplete)**, a web development company from Iasi, Romania, with 10+ years building React, TypeScript and Node.js applications. Need custom React components or a full web application? [Contact EVAFICY](https://evaficy.com/contact-evaficy/?utm_source=oss&utm_medium=readme&utm_campaign=react-custom-fields-autocomplete).
+
 ## Features
 
 - 🎯 **Provider Pattern**: Easy configuration and state management
@@ -172,6 +176,7 @@ npm run dev
 
 ## Changelog
 
+- **1.1.1** - README: documentation link, EVAFICY credit and contact links.
 - **1.1.0** - `labelOptions`/`valueOptions` now appear as suggestions and `labelProps`/`valueProps` are applied to the text fields, as documented (previously both were ignored). Layout works with Material UI 7 (MUI Grid's `item`/`xs` API changed in v7) and the text fields are full width instead of a fixed 300px. `fieldProps.paperSx` no longer reaches the DOM. Removed debug logging. Field ids stay unique when fields are added quickly. TypeScript declarations included (the published types file was empty). Build tooling updated.
 - **1.0.2** - Initial public release.
 
@@ -191,3 +196,7 @@ MIT © Andrei-Constantin Alexandru
 
 - 🐛 Issues: [GitHub Issues](https://github.com/programmer4web/react-custom-fields-autocomplete/issues)
 - 📖 Documentation: [Official Page](https://evaficy.com/react-custom-fields-autocomplete)
+
+---
+
+Made by [EVAFICY](https://evaficy.com/?utm_source=oss&utm_medium=readme&utm_campaign=react-custom-fields-autocomplete): custom React & Node.js development, full-stack applications and AI-powered QA with Evaficy Smart Test. [Get in touch](https://evaficy.com/contact-evaficy/?utm_source=oss&utm_medium=readme&utm_campaign=react-custom-fields-autocomplete).
